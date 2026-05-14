@@ -34,7 +34,7 @@ function ProjectRoute() {
     <div className="min-h-screen selection:bg-zinc-700 selection:text-white relative bg-bg-base">
       <CaseStudyNavbar />
       
-      <div className="pt-24 pb-4 flex justify-center sticky top-0 z-40 bg-bg-base/80 backdrop-blur-md border-b border-white/[0.05]">
+      <div className="pt-24 pb-8 flex justify-center bg-bg-base">
         <div className="flex bg-surface p-1 rounded-full border border-border shadow-lg gap-1">
           {(['all', 'fullstack', 'qa', 'devops'] as const).map((filterOpt) => {
             const active = activeFilter === filterOpt

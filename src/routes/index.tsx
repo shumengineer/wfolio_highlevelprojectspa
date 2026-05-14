@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import AdditionalHighlights from '../components/AdditionalHighlights'
 import ProjectsOverview from '../components/projects/ProjectsOverview'
 import OtherProjectsGrid from '../components/projects/OtherProjectsGrid'
+import ThisPortfolioCTA from '../components/projects/ThisPortfolioCTA'
 import { projectsData, otherProjectsData } from '../data/projects'
 
 export const Route = createFileRoute('/')({
@@ -48,6 +49,8 @@ function Page() {
           </div>
           <ProjectsOverview projects={mainProjectsArray} />
         </div>
+
+        <ThisPortfolioCTA />
 
         <OtherProjectsGrid projects={otherProjectsData} />
 

@@ -2,6 +2,16 @@ import { Link } from '@tanstack/react-router'
 import type { ProjectData } from '../../data/projects'
 import ScrollRevealBlock from './ScrollRevealBlock'
 
+const ROLE_LABELS: Record<string, string> = {
+  fullstack: 'Full-Stack',
+  frontend: 'Frontend',
+  backend: 'Backend',
+  qa: 'Quality Assurance',
+  devops: 'DevOps / Infra'
+}
+
+const ROLE_ORDER = ['fullstack', 'frontend', 'backend', 'qa', 'devops']
+
 interface Props {
   projects: ProjectData[]
 }
@@ -85,16 +95,18 @@ export default function ProjectsOverview({ projects }: Props) {
                 </p>
 
                 {/* Desktop Detailed Role Badges */}
-                <div className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-white/[0.05]">
-                  {project.roleBadges?.fullstack && (
-                    <RoleBadge label="Full-Stack" techs={project.roleBadges.fullstack} />
-                  )}
-                  {project.roleBadges?.qa && (
-                    <RoleBadge label="Quality Assurance" techs={project.roleBadges.qa} />
-                  )}
-                  {project.roleBadges?.devops && (
-                    <RoleBadge label="DevOps / Infra" techs={project.roleBadges.devops} />
-                  )}
+                <div className="pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 border-t border-white/[0.05]">
+                  {ROLE_ORDER.map((key) => {
+                    const techs = project.roleBadges?.[key as keyof typeof project.roleBadges]
+                    if (!techs || techs.length === 0) return null
+                    return (
+                      <RoleBadge 
+                        key={key} 
+                        label={ROLE_LABELS[key] || key} 
+                        techs={techs} 
+                      />
+                    )
+                  })}
                 </div>
               </div>
               

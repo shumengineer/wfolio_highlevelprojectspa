@@ -45,6 +45,10 @@ export const Route = createRootRoute({
       {
         title: 'Władysław Szumejko — Engineer',
       },
+      {
+        name: 'darkreader-lock',
+        content: '',
+      },
     ],
     links: [
       {

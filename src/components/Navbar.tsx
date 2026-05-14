@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
 import { copyToClipboard } from '../lib/analytics-utils'
+import { GITHUB_URL } from '../lib/constants'
 
 export default function Navbar() {
   const [showEmail, setShowEmail] = useState(false)
@@ -31,7 +32,7 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-text-muted">
-        <a href="https://github.com/wladyslaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors hidden md:block">GitHub ↗</a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors hidden md:block">GitHub ↗</a>
         
         {/* Desktop: Full email with copy button */}
         <div className="hidden md:flex items-center gap-2">

@@ -65,7 +65,7 @@ export default function CaseStudySection({ section, index, diagramElement }: Pro
             {section.carouselImages && (
               <div className="my-10 -mx-4 sm:-mx-12 overflow-hidden">
                 <motion.div 
-                  className="flex gap-6 px-4 sm:px-12 overflow-x-auto pb-8 custom-scrollbar scroll-smooth snap-x"
+                  className="flex gap-6 px-4 sm:px-12 overflow-x-auto pb-8 custom-scrollbar snap-x [overscroll-behavior-x:contain]"
                 >
                   {section.carouselImages.map((img, i) => (
                     <motion.div
@@ -122,7 +122,7 @@ export default function CaseStudySection({ section, index, diagramElement }: Pro
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1 }}
-            className="w-full px-4 sm:px-12 overflow-x-auto custom-scrollbar"
+            className="w-full px-4 sm:px-12 overflow-x-auto custom-scrollbar [overscroll-behavior-x:contain]"
           >
             <div className="min-w-[800px] max-w-[1400px] mx-auto">
               {diagramElement}

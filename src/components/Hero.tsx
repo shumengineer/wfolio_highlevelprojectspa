@@ -1,4 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import clsx from 'clsx'
+
+const WORDS = [
+  { text: 'build', color: 'bg-white/[0.04] border-white/5' },
+  { text: 'test', color: 'bg-white/[0.06] border-white/5' },
+  { text: 'deploy', color: 'bg-white/[0.02] border-white/5' }
+]
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -18,6 +26,15 @@ export default function Hero() {
 
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const [wordIndex, setWordIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % WORDS.length)
+    }, 3000)
+    return () => clearInterval(timer)
   }, [])
 
   const fadeOut = Math.max(1 - scrollY / 600, 0)
@@ -87,7 +104,36 @@ export default function Hero() {
               </p>
 
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 sm:mb-10 leading-[1.08] hero-text hero-text--2">
-                <span className="block">I build scalable</span>
+                <span className="block flex items-center gap-[0.25em] flex-wrap">
+                  I 
+                  <span className="inline-grid relative items-center align-middle">
+                    {/* Invisible spacer to reserve the maximum possible width and prevent layout shift */}
+                    <span className="invisible px-3 py-1 rounded-2xl border border-transparent leading-none col-start-1 row-start-1">
+                      deploy
+                    </span>
+                    <div className="col-start-1 row-start-1 flex items-center justify-center w-full">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={WORDS[wordIndex].text}
+                          initial={{ opacity: 0, y: 8, filter: 'blur(4px)' }}
+                          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                          exit={{ opacity: 0, y: -8, filter: 'blur(4px)' }}
+                          transition={{ 
+                            duration: 0.6, 
+                            ease: [0.2, 1, 0.2, 1] 
+                          }}
+                          className={clsx(
+                            "px-3 py-1 rounded-2xl border transition-colors duration-1000 leading-none",
+                            WORDS[wordIndex].color
+                          )}
+                        >
+                          {WORDS[wordIndex].text}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                  </span>
+                  scalable
+                </span>
                 <span className="block">software solutions</span>
                 <span className="block text-text-muted/70">that work.</span>
               </h1>

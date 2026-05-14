@@ -1,6 +1,6 @@
-# Engineer's Technical Journal Engine
+# W.S's Technical Journal Engine
 
-A high-performance, minimalist technical communication engine designed for software engineers to document complex architectural challenges and technical narratives. Built with a focus on performance, security, and immersive editorial experiences.
+A minimalist technical communication engine designed to document complex architectural challenges and technical narratives. Built with a focus on immersive editorial experiences.
 
 ## Technical Architecture
 
@@ -22,7 +22,6 @@ Modular route architecture that allows for deep-dive technical narratives. Each 
 
 ### 2. High-Security Communication Patterns
 - **Bot-Resistant Email Obfuscation**: The contact logic defers mounting until client-side execution and uses hidden DOM "mesh" elements to prevent harvesting by static scraping bots.
-- **Click-to-Copy Pipeline**: Replaced standard `mailto:` links with a native Clipboard API implementation for better UX and security.
 
 ### 3. Advanced Scroll-Linked Interactions
 - **Horizontal Scroll Lock**: A mathematically precise horizontal scroll section for secondary project listings. It uses `useLayoutEffect` and `useTransform` to synchronize 1:1 vertical-to-horizontal travel, ensuring content is fully viewed before release.
